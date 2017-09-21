@@ -1,0 +1,15 @@
+<div *ngIf="chord.length > 0 ;else norecords">
+  <div *ngFor="let item of chord" class="chord-description">
+    <div class="note-key"> {{ item.key  | uppercase}}</div>
+    <div class="note-name">({{ item.name }})</div>
+  </div>
+</div>
+
+<ng-template #norecords>
+  <div class="chord-message">Digite uma cifra válida</div>
+</ng-template>
+
+<ul class="set">
+  <li *ngFor="let item of notes" [class]="item.key + ' ' + (item.key.includes('#') ? 'black':'white')" [ngClass]="{ chord : chord.includes(item), primary : item == chord[0] }">
+  </li>
+</ul>
